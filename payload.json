@@ -1,0 +1,21 @@
+{
+  "guid": "tatacliq123chet1",
+  "name": "forgot_password",
+  "timestamp": "2019-04-07T02:51:38Z",
+  "customer": {
+    "firstName": "cs",
+    "lastName": "cs",
+    "customerId": "12345",
+    "email": "chethan.sindhie@narvar.com",
+    "channels": [
+      "email",
+      "sms"
+    ],
+    "phoneNumber": "9663399077"
+  },
+  "params": {
+    "forgetpass_otp": "875233",
+    "forgetpass_otp_flag": "N",
+    "change_passwordurl": "http://example.com"
+  }
+}
