@@ -17,4 +17,5 @@ Benchmark
    - order_id | guid
    - order_date | date
    - customer_name | string
+ - look at benchmarks for viper (not published on GIT) , may induce latency.
    
