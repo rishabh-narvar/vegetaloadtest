@@ -11,9 +11,9 @@
  ### Sample yaml
    ```yaml
    post-request-json-dynamic-fields: 
-          guid: uuid #uuid string
-          timestamp: timestamp #timestamp
-          customer.firstName: uuid
+     guid: uuid #uuid string
+     timestamp: timestamp #timestamp
+     customer.firstName: uuid
    ```
   
   
