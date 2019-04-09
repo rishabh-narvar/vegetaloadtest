@@ -9,10 +9,12 @@
  - timestamp (utc timestamp RFC3339 - https://golang.org/pkg/time/))
 
  ### Sample yaml
-   ` post-request-json-dynamic-fields: 
-        guid: uuid #uuid string
-        timestamp: timestamp #timestamp
-        customer.firstName: uuid `
+   ```yaml
+   post-request-json-dynamic-fields: 
+          guid: uuid #uuid string
+          timestamp: timestamp #timestamp
+          customer.firstName: uuid
+   ```
   
   
 ## Unit test
