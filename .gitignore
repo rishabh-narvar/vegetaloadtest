@@ -5,3 +5,4 @@ debug
 main/results.bin
 results.bin
 .DS_Store
+main/request_dump.json

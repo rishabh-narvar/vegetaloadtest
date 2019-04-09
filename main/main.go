@@ -21,14 +21,16 @@ func main() {
   HEADERS := conf.GetStringMapString("headers")
   JSON_FILE_PATH := conf.GetString("post-request-json-file-path")
   DYNAMIC_FIELDS := conf.GetStringMapString("post-request-json-dynamic-fields")
-  RESULTS_FILE_PATH := conf.GetString("attack-results-file-path")
+  RESULTS_FILE_PATH := conf.GetString("dump-attack-results-file-path")
+  REQUESTS_FILE_PATH := conf.GetString("dump-request-file-path")
 
   http_headers := utils.GetHttpHeaders(HEADERS)
   test_rate := vegeta.Rate{Freq: VEGETA_RATE, Per: time.Second}
   test_duration := time.Duration(DURATION) * (time.Second)
 
+  requestsFileWriter, _ := utils.OpenFileCreateIfNotFound(REQUESTS_FILE_PATH)
   jsonString := parser.GetJsonString(JSON_FILE_PATH)
-  targeter := utils.GetTargeter(URL, HTTP_METHOD, http_headers, jsonString, DYNAMIC_FIELDS)
+  targeter := utils.GetTargeter(URL, HTTP_METHOD, http_headers, jsonString, DYNAMIC_FIELDS, requestsFileWriter)
   attacker := vegeta.NewAttacker()
 
   for res := range attacker.Attack(targeter, test_rate, test_duration, "Bang!") {

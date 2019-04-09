@@ -15,4 +15,4 @@ duration: 1 #Veteta attack duration
 
 #Dump
 dump-request-file-path: ./request_dump.json
-attack-results-file-path: ./results.bin
+dump-attack-results-file-path: ./results.bin
