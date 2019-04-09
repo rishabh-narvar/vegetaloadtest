@@ -1,4 +1,5 @@
-vscode/
+.vscode
+.vscode/*
 main/debug
 main/main
 debug
