@@ -4,6 +4,17 @@
  - Run go build on main.go
  - run the main go binary
 
+Dyamic Fields : current support
+uuid (string) 
+timestamp (utc timestamp RFC3339 - https://golang.org/pkg/time/))
+
+Sample yaml
+  post-request-json-dynamic-fields: 
+    guid: uuid #uuid string
+    timestamp: timestamp #timestamp
+    customer.firstName: uuid
+  
+  
 Unit test
 - coverage low. But basic yaml and json parsing have unit test coverage
 
