@@ -2,16 +2,13 @@
 
  - In the Config.yaml define your test criteria.
  - Run go build on main.go
- - run the go binary
+ - run the main go binary
 
 Unit test
-- coverage low. 
+- coverage low. But basic yaml and json parsing have unit test coverage
 
-Benchmark
-- TBD
-
-
-- TBD
+TBD
+ - Benchmark
  - Optimize header formation
  - For now a `uuid` is assumed as the dybamic value, but types per field should be configurable
    - order_id | guid
