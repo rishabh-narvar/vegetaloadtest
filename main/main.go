@@ -1,66 +1,41 @@
 package main
 
 import (
-	"strings"
-	"net/http"
 	"github.com/perf/parser"
-	"fmt"
-	"os"
   "time"
-  "perf/config"
+  "github.com/perf/config"
+  "github.com/perf/utils"
   vegeta "github.com/tsenart/vegeta/lib"
 )
 
 func main() {
-  conf:= config.InitConfig("../config.yaml")
+  var metrics vegeta.Metrics
 
+  conf:= config.InitConfig("../config.yaml")
+  
+  //refactor this into constants file
   URL := conf.GetString("url")
-  HTTPMETHOD := conf.GetString("httpmethod")
-  VEGETARATE := conf.GetInt("rate")
+  HTTP_METHOD := conf.GetString("httpmethod")
+  VEGETA_RATE := conf.GetInt("rate")
   DURATION := conf.GetInt("duration")
   HEADERS := conf.GetStringMapString("headers")
-  JSONFILEPATH := conf.GetString("json-body-file-path")
-  DYNAMICFIELDS := conf.GetStringSlice("json-body-dynamic-fields")
-  
-  jsonString := parser.GetJsonString(JSONFILEPATH)
-  
+  JSON_FILE_PATH := conf.GetString("post-request-json-file-path")
+  DYNAMIC_FIELDS := conf.GetStringMapString("post-request-json-dynamic-fields")
+  RESULTS_FILE_PATH := conf.GetString("attack-results-file-path")
 
-  //fmt.Println(jsonStringForRequest)
+  http_headers := utils.GetHttpHeaders(HEADERS)
+  test_rate := vegeta.Rate{Freq: VEGETA_RATE, Per: time.Second}
+  test_duration := time.Duration(DURATION) * (time.Second)
 
-  rate := vegeta.Rate{Freq: VEGETARATE, Per: time.Second}
-  duration := time.Duration(DURATION) * (time.Second)
-
-  tr := getTargeter(URL, HTTPMETHOD, HEADERS, jsonString, DYNAMICFIELDS)
+  jsonString := parser.GetJsonString(JSON_FILE_PATH)
+  targeter := utils.GetTargeter(URL, HTTP_METHOD, http_headers, jsonString, DYNAMIC_FIELDS)
   attacker := vegeta.NewAttacker()
 
-  var metrics vegeta.Metrics
-  for res := range attacker.Attack(tr, rate, duration, "Bang!") {
+  for res := range attacker.Attack(targeter, test_rate, test_duration, "Bang!") {
     metrics.Add(res)
   }
 
-  reporter := vegeta.NewTextReporter(&metrics)
+  reporter := vegeta.NewJSONReporter(&metrics)
   metrics.Close()
-  fmt.Printf("99th percentile: %s\n", metrics.Latencies.P99)
-  fmt.Printf("report %s", reporter.Report(os.Stdout))
+  utils.ProcessReport(reporter, RESULTS_FILE_PATH)
 }
-
-func getTargeter (url string, httpmethod string, headers map[string]string, body string, dynamicFields []string) vegeta.Targeter{
-  return func() vegeta.Targeter {
-    return func(t *vegeta.Target) (err error) {
-        t.Method = httpmethod
-        t.URL    = url
-        if body != "" && strings.ToUpper(httpmethod) != "GET" {
-          jsonStringForRequest := parser.GetPreparedJsonForRequest(body, dynamicFields)
-          fmt.Println(jsonStringForRequest)
-          t.Body = []byte(jsonStringForRequest)
-        }
-        t.Header = http.Header{}
-        
-        for headerKey, headerValue := range headers{
-          t.Header.Add(headerKey, headerValue)
-        }
-        return err
-    }
-  }()
-}
-

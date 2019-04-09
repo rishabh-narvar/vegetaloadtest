@@ -2,3 +2,6 @@ vscode/
 main/debug
 main/main
 debug
+main/results.bin
+results.bin
+.DS_Store

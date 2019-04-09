@@ -3,8 +3,16 @@ httpmethod: POST
 headers:
   Content-Type: application/json
   Authorization: Basic YWRkYmNjNGZhM2Y3NGRiNDk1MDA3Y2QwZmQ5YTU1ZTk6ZjA1YzEyZGNjNTgzNDQ2OWEzYmQ1Y2IzZjI1MGUxZTM=
-json-body-file-path: ../payload.json
-json-body-dynamic-fields: 
-  - guid
-rate: 10 #Vegeta attack rate
+post-request-json-file-path: ../payload.json
+post-request-json-dynamic-fields: 
+  guid: uuid #uuid string
+  timestamp: timestamp #timestamp
+  customer.firstName: uuid
+  
+#Vegeta
+rate: 2 #Vegeta attack rate
 duration: 1 #Veteta attack duration
+
+#Dump
+dump-request-file-path: ./request_dump.json
+attack-results-file-path: ./results.bin

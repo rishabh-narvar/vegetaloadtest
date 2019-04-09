@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"time"
 	"github.com/tidwall/sjson"
 	"io/ioutil"
     "os"
@@ -21,12 +22,17 @@ func GetJsonString(filePath string) string{
     return jsonString
 }
 
-func GetPreparedJsonForRequest(jsonString string, dynamicfields []string) string  {
+func GetPreparedJsonForRequest(jsonString string, dynamicfields map[string]string) string  {
     newJSON:= jsonString   
 
-    for _, field := range dynamicfields {
-		newJSON, _= sjson.Set(jsonString, field , uuid.New().String())
-	}
-
+    for key, value := range dynamicfields {
+        switch value{
+            case "timestamp":
+               newJSON, _ = sjson.Set(newJSON, key, time.Now().UTC().Format(time.RFC3339))
+               //fmt.Println(newJSON)
+            case "uuid":
+                newJSON, _= sjson.Set(newJSON, key , uuid.New().String())
+        }
+    }
     return newJSON
 }
