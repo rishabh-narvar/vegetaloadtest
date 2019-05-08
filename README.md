@@ -7,6 +7,8 @@
 ## Dyamic Fields : current support
  - uuid (string) 
  - timestamp (utc timestamp RFC3339 - https://golang.org/pkg/time/))
+ - epoch
+ - epochnano
 
  ### Sample yaml
    ```yaml
