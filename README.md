@@ -1,3 +1,8 @@
+# Problem 
+ - how do we test payloads which require changing field values with every request?
+ - how do we test requests that require dynamic headers?
+ - yet use the power of vegeta?
+
 # Vegeta Dynamic LoadTest
 
  - In the Config.yaml define your test criteria.
