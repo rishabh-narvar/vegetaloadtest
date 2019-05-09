@@ -1,7 +1,7 @@
 # Problem 
  - how do we load test APIs that require payload field values to change with every request? (ex OrderAPI)
  - how do we test requests that require dynamic headers? (ex testing shopify app with headers containing hmac of request payload)
- - yet use the power of vegeta?
+ - yet use the power of vegeta? (https://github.com/tsenart/vegeta)
 
 # Vegeta Dynamic LoadTest
 
