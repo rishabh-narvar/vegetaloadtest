@@ -5,7 +5,8 @@
 
 # Vegeta Dynamic LoadTest
 
- - In the Config.yaml define your test criteria.
+ - In Config.yaml define your test criteria.
+ - Copy json into payload.json (path is configurable)
  - Run go build on main.go
  - run the main go binary
 
