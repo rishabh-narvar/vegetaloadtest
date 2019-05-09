@@ -1,6 +1,6 @@
 # Problem 
- - how do we test payloads which require changing field values with every request?
- - how do we test requests that require dynamic headers?
+ - how do we load test APIs which require changing payload field value with every request? (ex OrderAPI)
+ - how do we test requests that require dynamic headers? (ex testing shopify app with headers containing hmac of request payload)
  - yet use the power of vegeta?
 
 # Vegeta Dynamic LoadTest
@@ -12,7 +12,7 @@
 
 ## Dyamic Fields : current support
  - uuid (string) 
- - timestamp (utc timestamp RFC3339 - https://golang.org/pkg/time/))
+ - timestamp (utc timestamp RFC3339 - https://golang.org/pkg/time/)) (ex. carrier apis need scan times to be different)
  - epoch
  - epochnano
 
