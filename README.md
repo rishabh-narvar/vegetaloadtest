@@ -8,7 +8,7 @@
  - In Config.yaml define your test criteria.
  - Copy your api json into payload.json file (path is configurable)
  - In the terminal >go build main.go
- - run >./main
+ - run >./main -config=<path_to_config.yaml>
 
 ## Dyamic Fields : current support
  - uuid (string) 
