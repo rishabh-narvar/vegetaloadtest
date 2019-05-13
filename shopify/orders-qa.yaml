@@ -1,0 +1,24 @@
+url: https://shopify-qa01.narvar.qa/shopify/webhook/order
+httpmethod: POST
+static-headers:
+    Content-Type: application/json
+    x-shopify-shop-domain: csnarvar.myshopify.com
+    x-shopify-topic: a/update
+    #Authorization: Basic YWRkYmNjNGZhM2Y3NGRiNDk1MDA3Y2QwZmQ5YTU1ZTk6ZjA1YzEyZGNjNTgzNDQ2OWEzYmQ1Y2IzZjI1MGUxZTM=
+dynamic-headers:
+  x-shopify-hmac-sha256: 
+    key: 8bcb414d6828e0c5f80249a1524d5d50
+    function: hmac    
+    
+post-request-json-file-path: ../shopify/order_payload.json
+post-request-json-dynamic-fields:
+    order_number: uuid #uuid
+    id: epochnano #epoch nano seconds
+
+#Vegeta
+rate: 5 #Vegeta attack rate
+duration: 1 #Vegeta attack duration
+
+#Dump
+dump-request-file-path: ../shopify/shopify_output/request_dump.json
+dump-attack-results-file-path: ../shopify/shopify_output/results.bin

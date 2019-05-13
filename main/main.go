@@ -11,14 +11,19 @@ import (
 func main() {
   var metrics vegeta.Metrics
 
-  conf:= config.InitConfig("../config.yaml")
+  conf:= config.InitConfig("../shopify/orders-qa.yaml")
   
   //refactor this into constants file
   URL := conf.GetString("url")
   HTTP_METHOD := conf.GetString("httpmethod")
   VEGETA_RATE := conf.GetInt("rate")
   DURATION := conf.GetInt("duration")
-  HEADERS := conf.GetStringMapString("headers")
+  HEADERS := conf.GetStringMapString("static-headers")
+  DYNAMIC_HEADERS := conf.GetStringMap("dynamic-headers")
+
+  dynamic_headers := utils.ConvertToMapStringMapStringString(DYNAMIC_HEADERS)
+
+
   JSON_FILE_PATH := conf.GetString("post-request-json-file-path")
   DYNAMIC_FIELDS := conf.GetStringMapString("post-request-json-dynamic-fields")
   RESULTS_FILE_PATH := conf.GetString("dump-attack-results-file-path")
@@ -30,7 +35,8 @@ func main() {
 
   requestsFileWriter, _ := utils.OpenFileCreateIfNotFound(REQUESTS_FILE_PATH)
   jsonString := parser.GetJsonString(JSON_FILE_PATH)
-  targeter := utils.GetTargeter(URL, HTTP_METHOD, http_headers, jsonString, DYNAMIC_FIELDS, requestsFileWriter)
+
+  targeter := utils.GetTargeter(URL, HTTP_METHOD, http_headers, jsonString, DYNAMIC_FIELDS, requestsFileWriter, dynamic_headers)
   attacker := vegeta.NewAttacker()
 
   for res := range attacker.Attack(targeter, test_rate, test_duration, "Bang!") {

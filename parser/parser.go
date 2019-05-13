@@ -32,6 +32,10 @@ func GetPreparedJsonForRequest(jsonString string, dynamicfields map[string]strin
                //fmt.Println(newJSON)
             case "uuid":
                 newJSON, _= sjson.Set(newJSON, key , uuid.New().String())
+            case "epoch":
+                newJSON, _= sjson.Set(newJSON, key , time.Now().Unix())
+            case "epochnano":
+                newJSON, _= sjson.Set(newJSON, key , time.Now().UnixNano())
         }
     }
     return newJSON

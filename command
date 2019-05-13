@@ -2,3 +2,6 @@ jq -ncM 'while(true; .+10010) | {method: "POST", url: "https://ws.narvar.qa/api/
   vegeta attack -rate=3/s -lazy -format=json -duration=1s | \
   tee results.bin | \
   vegeta report
+
+
+  echo "GET https://csnarvar.myshopify.com//admin/products/1864856240179.json" | vegeta attack -rate=1 -duration=1s  -header=Authorization:Basic OmQwN2E0NmYwZmRjNTQ2ZjllY2ZlY2E0ZmMzNzA2YzVm | vegeta 

@@ -1,0 +1,80 @@
+{
+  "product": {
+    "id": 1864856240179,
+    "title": "T-Shirt",
+    "body_html": "",
+    "vendor": "csnarvar",
+    "product_type": "clothing",
+    "created_at": "2019-04-26T00:58:08-04:00",
+    "handle": "t-shirt",
+    "updated_at": "2019-04-30T06:28:55-04:00",
+    "published_at": "2019-04-26T00:56:56-04:00",
+    "template_suffix": null,
+    "tags": "",
+    "published_scope": "web",
+    "admin_graphql_api_id": "gid://shopify/Product/1864856240179",
+    "variants": [{
+      "id": 17290063970355,
+      "product_id": 1864856240179,
+      "title": "Default Title",
+      "price": "0.00",
+      "sku": "",
+      "position": 1,
+      "inventory_policy": "deny",
+      "compare_at_price": null,
+      "fulfillment_service": "manual",
+      "inventory_management": "shopify",
+      "option1": "Default Title",
+      "option2": null,
+      "option3": null,
+      "created_at": "2019-04-26T00:58:08-04:00",
+      "updated_at": "2019-04-30T06:28:55-04:00",
+      "taxable": false,
+      "barcode": "",
+      "grams": 0,
+      "image_id": null,
+      "weight": 0,
+      "weight_unit": "kg",
+      "inventory_item_id": 17741063422003,
+      "inventory_quantity": 94,
+      "old_inventory_quantity": 94,
+      "requires_shipping": true,
+      "admin_graphql_api_id": "gid://shopify/ProductVariant/17290063970355"
+    }],
+    "options": [{
+      "id": 2555911503923,
+      "product_id": 1864856240179,
+      "name": "Title",
+      "position": 1,
+      "values": [
+        "Default Title"
+      ]
+    }],
+    "images": [{
+      "id": 5624287985715,
+      "product_id": 1864856240179,
+      "position": 1,
+      "created_at": "2019-04-26T00:58:11-04:00",
+      "updated_at": "2019-04-26T00:58:11-04:00",
+      "alt": null,
+      "width": 251,
+      "height": 201,
+      "src": "https://cdn.shopify.com/s/files/1/0080/0866/3091/products/download_2.jpeg?v=1556254691",
+      "variant_ids": [],
+      "admin_graphql_api_id": "gid://shopify/ProductImage/5624287985715"
+    }],
+    "image": {
+      "id": 5624287985715,
+      "product_id": 1864856240179,
+      "position": 1,
+      "created_at": "2019-04-26T00:58:11-04:00",
+      "updated_at": "2019-04-26T00:58:11-04:00",
+      "alt": null,
+      "width": 251,
+      "height": 201,
+      "src": "https://cdn.shopify.com/s/files/1/0080/0866/3091/products/download_2.jpeg?v=1556254691",
+      "variant_ids": [],
+      "admin_graphql_api_id": "gid://shopify/ProductImage/5624287985715"
+    }
+  }
+}

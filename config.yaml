@@ -5,8 +5,8 @@ headers:
   Authorization: Basic YWRkYmNjNGZhM2Y3NGRiNDk1MDA3Y2QwZmQ5YTU1ZTk6ZjA1YzEyZGNjNTgzNDQ2OWEzYmQ1Y2IzZjI1MGUxZTM=
 post-request-json-file-path: ../payload.json
 post-request-json-dynamic-fields: 
-  guid: uuid #uuid string
-  timestamp: timestamp #timestamp
+  guid: uuid #uuid string timestamp
+  timestamp: timestamp 
   customer.firstName: uuid
   
 #Vegeta

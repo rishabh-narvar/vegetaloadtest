@@ -1,0 +1,18 @@
+url: https://ws.narvar.qa/api/v1/event/
+httpmethod: POST
+headers:
+  Content-Type: application/json
+  #Authorization: Basic YWRkYmNjNGZhM2Y3NGRiNDk1MDA3Y2QwZmQ5YTU1ZTk6ZjA1YzEyZGNjNTgzNDQ2OWEzYmQ1Y2IzZjI1MGUxZTM=
+post-request-json-file-path: ./products.json
+post-request-json-dynamic-fields: 
+  id: uuid #uuid string timestamp
+  #timestamp: timestamp 
+  #customer.firstName: string
+  
+#Vegeta
+rate: 2 #Vegeta attack rate
+duration: 1 #Veteta attack duration
+
+#Dump
+dump-request-file-path: ./shopify-output/request_dump_product.json
+dump-attack-results-file-path: ./results.bin
