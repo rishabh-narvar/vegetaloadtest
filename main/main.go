@@ -1,17 +1,24 @@
 package main
 
 import (
+	"fmt"
 	"github.com/perf/parser"
   "time"
   "github.com/perf/config"
   "github.com/perf/utils"
   vegeta "github.com/tsenart/vegeta/lib"
+  "flag"
 )
 
 func main() {
   var metrics vegeta.Metrics
 
-  conf:= config.InitConfig("../shopify/orders-qa.yaml")
+  //conf:= config.InitConfig("../shopify/orders-qa.yaml")
+  confArg := flag.String("config", "../config.yaml", "path to cofig yml")
+  flag.Parse()
+  fmt.Println(*confArg)
+  //panic(0)
+  conf:= config.InitConfig(*confArg)
   
   //refactor this into constants file
   URL := conf.GetString("url")
