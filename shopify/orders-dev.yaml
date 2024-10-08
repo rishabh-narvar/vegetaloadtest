@@ -4,7 +4,7 @@ static-headers:
     Content-Type: application/json
     x-shopify-shop-domain: csnarvar.myshopify.com
     x-shopify-topic: a/update
-    #Authorization: Basic YWRkYmNjNGZhM2Y3NGRiNDk1MDA3Y2QwZmQ5YTU1ZTk6ZjA1YzEyZGNjNTgzNDQ2OWEzYmQ1Y2IzZjI1MGUxZTM=
+    #Authorization:
 dynamic-headers:
   x-shopify-hmac-sha256: 
     key: 8bcb414d6828e0c5f80249a1524d5d50

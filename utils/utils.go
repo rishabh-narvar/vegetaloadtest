@@ -1,18 +1,20 @@
 package utils
 
 import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/base64"
 	"errors"
-	"os"
-	"fmt"
 	"io"
+	"log"
+	"net/http"
+	"os"
 	"strings"
-    "net/http"
-    vegeta "github.com/tsenart/vegeta/lib"
-    "github.com/perf/parser"
-    "crypto/hmac"
-    "crypto/sha256"
-    "github.com/spf13/cast"
-    "encoding/base64"
+
+	"vegetaloadtest/parser"
+
+	"github.com/spf13/cast"
+	vegeta "github.com/tsenart/vegeta/lib"
 )
 
 func GetHttpHeaders(headers map[string]string) http.Header{
@@ -39,8 +41,8 @@ func GetTargeter (url string, httpmethod string, headers http.Header, body strin
               headers.Del(key)
               headers.Add(key, value)
             }
-            //hack determine a better way to do this. Have to dig into vegeta docs, if there is a handle to requests object in targetter
-            //spin off a go routine now
+            // hack determine a better way to do this. Have to dig into vegeta docs, if there is a handle to requests object in targetter
+            // spin off a go routine now
             if requestDumpFileWriter != nil {
                 go requestDumpFileWriter.WriteString(jsonStringForRequest + " \n")
             }
@@ -56,30 +58,30 @@ func GetTargeter (url string, httpmethod string, headers http.Header, body strin
     if writer != nil {
       err := reporter.Report(writer)
       if err != nil {
-          fmt.Errorf("Error %s", err)
+          log.Printf("Error %+v", err)
       }
     }
   }
 
   func OpenFileCreateIfNotFound(filePath string)(*os.File, error){
     if filePath == "" {
-        fmt.Errorf("Invalid file path %s ", filePath)
-        return nil, errors.New("Invalid file path")
+        log.Printf("Invalid file path %s", filePath)
+        return nil, errors.New("invalid file path")
     }
-   return os.OpenFile(filePath, os.O_RDWR | os.O_CREATE, 0777)
+   return os.OpenFile(filePath, os.O_RDWR | os.O_CREATE | os.O_TRUNC, 0777)
   }
 
   func ProcessReport(reporter vegeta.Reporter, filePath string){
     //debug
-    fmt.Printf("report %s", reporter.Report(os.Stdout))
+    // fmt.Printf("report %s", reporter.Report(os.Stdout))
     file, err := OpenFileCreateIfNotFound(filePath)
-
     if err != nil{
-        fmt.Errorf("Error dumping into results file %s ", err)
+        log.Printf("Error dumping into results file  %+v", err)
         return
       
-      DumpReportToFile(reporter, file)
     }
+	DumpReportToFile(reporter, file)
+
   }
 
 

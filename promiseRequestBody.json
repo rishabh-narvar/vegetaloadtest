@@ -1,0 +1,25 @@
+{
+	"order_date": "2023-10-07T15:00:00Z",
+	"destination": {
+		"postal_code": "10012",
+		"country": "US"
+	},
+	"items": "promise_item",
+	"request_page": "pdp",
+	"customer_id": "1233",
+	"session_id": "session_id",
+    "response_filter":[
+		{
+			"carrier": "ups"
+		},
+		{
+			"carrier": "usps"
+		},
+		{
+			"carrier": "ontrac"
+		},
+		{
+			"carrier": "lasership"
+		}
+	]
+}

@@ -2,7 +2,7 @@ url: https://ws.narvar.qa/api/v1/event/
 httpmethod: POST
 headers:
   Content-Type: application/json
-  #Authorization: Basic YWRkYmNjNGZhM2Y3NGRiNDk1MDA3Y2QwZmQ5YTU1ZTk6ZjA1YzEyZGNjNTgzNDQ2OWEzYmQ1Y2IzZjI1MGUxZTM=
+  #Authorization: 
 post-request-json-file-path: ./products.json
 post-request-json-dynamic-fields: 
   id: uuid #uuid string timestamp

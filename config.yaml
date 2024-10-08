@@ -1,17 +1,16 @@
-url: https://ws.narvar.qa/api/v1/event/
+url: https://ws-qa01.narvar.qa/api/v1/promise/edd
 httpmethod: POST
 headers:
+  Authorization:
   Content-Type: application/json
-  Authorization: Basic YWRkYmNjNGZhM2Y3NGRiNDk1MDA3Y2QwZmQ5YTU1ZTk6ZjA1YzEyZGNjNTgzNDQ2OWEzYmQ1Y2IzZjI1MGUxZTM=
-post-request-json-file-path: ../payload.json
-post-request-json-dynamic-fields: 
-  guid: uuid #uuid string timestamp
-  timestamp: timestamp 
-  customer.firstName: uuid
+post-request-json-file-path: ../promiseRequestBody.json
+post-request-json-dynamic-fields:
+  items: promise_item
+  session_id: uuid
   
 #Vegeta
-rate: 2 #Vegeta attack rate
-duration: 1 #Veteta attack duration
+rate: 5 #Vegeta attack rate
+duration: 300 #Veteta attack duration
 
 #Dump
 dump-request-file-path: ./request_dump.json

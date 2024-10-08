@@ -35,7 +35,7 @@ func TestGetPreparedJsonForRequest(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := GetPreparedJsonForRequest(tt.args.jsonString); got != tt.want {
+			if got := GetPreparedJsonForRequest(tt.args.jsonString, map[string]string{}); got != tt.want {
 				t.Errorf("GetPreparedJsonForRequest() = %v, want %v", got, tt.want)
 			}
 		})

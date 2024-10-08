@@ -1,10 +1,11 @@
 package config
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
-	"bytes"
-    "github.com/spf13/viper"
+
+	"github.com/spf13/viper"
 )
 
 
